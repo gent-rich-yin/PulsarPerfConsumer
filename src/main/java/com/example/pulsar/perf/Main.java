@@ -86,8 +86,8 @@ public class Main {
                 }
             }
          } finally {
-            pulsarConsumer.close();
-            pulsarClient.close();
+            if( pulsarConsumer != null ) pulsarConsumer.close();
+            if( pulsarClient != null ) pulsarClient.close();
             logger.info("The consumer is now gracefully closed");
         }
     }
