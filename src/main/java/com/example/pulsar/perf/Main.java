@@ -57,6 +57,7 @@ public class Main {
                     if( currentTopic != null && !currentTopic.isBlank() ) {
                         pulsarConsumer = pulsarClient.newConsumer(Schema.STRING)
                                 .topic(PerfStates.topic)
+                                .subscriptionName("my-subscription")
                                 .subscriptionType(SubscriptionType.Shared)
                                 .subscribe();
                         updatePerfMessage("Pulsar consumer subscribed to {0}", PerfStates.topic);
