@@ -49,7 +49,6 @@ public class Main {
             while (true) {
                 if( currentTopic == null || !currentTopic.equals(PerfStates.topic) ) {
                     if( currentTopic != null && !currentTopic.isBlank() && pulsarConsumer != null ) {
-                        pulsarConsumer.unsubscribe();
                         pulsarConsumer.close();
                     }
                     stime = System.currentTimeMillis();
@@ -58,7 +57,6 @@ public class Main {
                     if( currentTopic != null && !currentTopic.isBlank() ) {
                         pulsarConsumer = pulsarClient.newConsumer(Schema.STRING)
                                 .topic(PerfStates.topic)
-                                .subscriptionName("my-subscription")
                                 .subscriptionType(SubscriptionType.Shared)
                                 .subscribe();
                         updatePerfMessage("Pulsar consumer subscribed to {0}", PerfStates.topic);
