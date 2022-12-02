@@ -75,7 +75,7 @@ public class Main {
                 }
 
                 Message<String> record = pulsarConsumer.receive();
-                pulsarConsumer.acknowledgeAsync(record);
+                pulsarConsumer.acknowledge(record);
                 long ftime = System.currentTimeMillis();
                 count++;
                 if( ftime - stime > 1000L ) {
