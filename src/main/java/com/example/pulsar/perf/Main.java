@@ -75,6 +75,7 @@ public class Main {
                 }
 
                 Messages<String> records = pulsarConsumer.batchReceive();
+                pulsarConsumer.acknowledgeAsync(records);
                 long ftime = System.currentTimeMillis();
                 count += records.size();
                 if( ftime - stime > 1000L ) {
