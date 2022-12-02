@@ -74,10 +74,10 @@ public class Main {
                     }
                 }
 
-                Messages<String> records = pulsarConsumer.batchReceive();
-                pulsarConsumer.acknowledgeAsync(records);
+                Message<String> record = pulsarConsumer.receive();
+                pulsarConsumer.acknowledgeAsync(record);
                 long ftime = System.currentTimeMillis();
-                count += records.size();
+                count++;
                 if( ftime - stime > 1000L ) {
                     this.messagesReceivedLastSecond = count;
                     count = 0;
